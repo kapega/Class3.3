@@ -2,8 +2,6 @@
 
 namespace Ekaterina\Classes;
 
-use Ekaterina\Interfaces;
-
 class Car extends Product
 {
 	public $region;
@@ -22,6 +20,11 @@ class Car extends Product
 	
 	public function getPrice()
 	{
-		return 'Получи нереальную скидку сейчас и купи ' . $this->name . ' по цене ' . round($this->price / 1.2) . ' рублей. <br>';
+		return round($this->price / 1.2);
+	}
+	
+	public function getPriceText()
+	{
+		return 'Получи нереальную скидку сейчас и купи ' . $this->name . ' по цене ' . $this->getPrice() . ' рублей. <br>';
 	}
 }

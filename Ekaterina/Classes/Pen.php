@@ -2,8 +2,6 @@
 
 namespace Ekaterina\Classes;
 
-use Ekaterina\Interfaces;
-
 class Pen extends Product
 {
 	public $color;

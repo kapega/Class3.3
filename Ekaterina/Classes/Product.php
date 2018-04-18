@@ -2,9 +2,7 @@
 
 namespace Ekaterina\Classes;
 
-use Ekaterina\Interfaces;
-
-class Product extends ClassWithPrice implements HasAmount // Товар
+class Product extends ClassWithPrice implements \Ekaterina\Interfaces\HasAmount // Товар
 {
 	public $amount;
 	
@@ -27,18 +25,23 @@ class Product extends ClassWithPrice implements HasAmount // Товар
 	
 	public function getPrice()
 	{
-		$str = "Стоимость билета по направлению <strong>{$this->name}</strong> на данный момент равна ";
 		if ($this->amount < 10)
 		{
-			return $str . round($this->price + ($this->price * 0.5)) . '.<br>';
+			return round($this->price + ($this->price * 0.5));
 		}
 		elseif ($this->amount > 90)
 		{
-			return $str . round($this->price - ($this->price * 0.5)) . '.<br>';
+			return round($this->price - ($this->price * 0.5));
 		}
 		else
 		{
-			return $str . $this->price . '.<br>';
+			return $this->price;
 		}
+	}
+	
+	public function getPriceText()
+	{
+		$str = "Стоимость билета по направлению <strong>{$this->name}</strong> на данный момент равна ";
+		return $str . $this->getPrice() . '.<br>';
 	}
 }

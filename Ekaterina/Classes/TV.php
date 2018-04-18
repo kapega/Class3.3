@@ -2,8 +2,6 @@
 
 namespace Ekaterina\Classes;
 
-use Ekaterina\Interfaces;
-
 class TV extends Product
 {
 	public $diagonal;
@@ -22,6 +20,11 @@ class TV extends Product
 	
 	public function getPrice()
 	{
-		return 'Цена для продажи: ' . $this->price * 2 . ' рублей. <br>';
+		return $this->price * 2;
+	}
+	
+	public function getPriceText()
+	{
+		return 'Цена для продажи: ' . $this->getPrice() . ' рублей. <br>';
 	}
 }

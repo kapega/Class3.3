@@ -27,14 +27,22 @@ class Cart
 		}
 	}
 	
-	public function count_items()
+	public function countItems()
 	{
 		return count($this -> items);
 	}
 	
-	public function added_items()
+	public function addedItems()
 	{
 		return $this -> items;
+	}
+	
+	public function getItem($index)
+	{
+		$item = $this -> items[$index];
+		if (empty($item))
+			throw new InvalidArgumentException('Not exist');
+		return $item;
 	}
 	
 	public function sum()

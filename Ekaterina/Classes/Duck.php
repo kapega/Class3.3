@@ -2,9 +2,7 @@
 
 namespace Ekaterina\Classes;
 
-use Ekaterina\Interfaces;
-
-class Duck extends Product implements Duckable
+class Duck extends Product implements \Ekaterina\Interfaces\Duckable
 {
 	public $color;
 	public $size;

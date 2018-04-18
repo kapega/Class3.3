@@ -3,28 +3,25 @@ namespace Ekaterina\Classes;
 
 class Order
 {
-    private $order;
+    private $cart;
 	
 	public function __construct(Cart $cart)
 	{
-	$this->order = $cart;
+		$this->cart = $cart;
+	}
+	
+	public function orderDescription($cart_index)
+	{
+		$item = $this->cart->getItem($cart_index);
+		$i = $cart_index + 1;
+		return "<strong>Товар [$i]:</strong> {$item->name}, <strong>цена:</strong> {$item->getPrice()} рублей";
 	}
 		
-	public function orderDescription()
+	public function getOrder()
 	{
-		echo "<strong>Товар:</strong> {$this->name} <strong>цена:</strong> {$this->getPrice()} рублей";
-	}
-		
-    public function getOrder()
-	{
-		  $i = 1;
-		  foreach ($this->order->items as $key=>$product) 
-		  {
-					echo "<p>Товар: {$i}</p>";
-
-					$this->order[$key]->orderDescription();
-					$i++;
-					echo '<br>';
-		  } 
+		foreach ($this->cart->addedItems() as $key => $product) 
+		{
+			echo '<p>', $this->orderDescription($key), '</p>';
+		}
 	}
 }

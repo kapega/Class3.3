@@ -4,7 +4,7 @@ class Psr4AutoloaderClass
 {
 	protected $prefixes = [];
 	
-	public function register()
+	public function __construct()
     {
         spl_autoload_register([$this, 'loadClass']);
     }
