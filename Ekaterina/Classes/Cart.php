@@ -6,9 +6,10 @@ class Cart
 {
     protected $items = [];
 	
-    public function __construct()
+    public function __construct($name, $price)
     {
-        //
+        $this->name = $name;
+        $this->price = $price;
     }
 	
     public function add(Product $product)
